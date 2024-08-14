@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100%;
+    font-family: 'Poppins-Light', sans-serif;
+
+}
+html{
+    height: 100%;
+}
+
+::selection{
+    background-color: rgba(53, 145, 250, 0.561);
+}
+
+
+@font-face {
+    font-family: 'Poppins-Light';
+    src: url("../fonts/Poppins-Light.ttf");   
+}
+@font-face {
+    font-family: 'Poppins-Medium';
+    src: url("../fonts/Poppins-Medium.ttf");   
+}

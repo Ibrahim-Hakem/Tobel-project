@@ -1,0 +1,121 @@
+body{
+    background-color: rgb(18, 18, 18);
+    color: #f0f0f0;
+    overflow: hidden;
+    overflow-y: hidden;
+}
+.background{
+    font-size: 35vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    filter: blur(4px);
+    -webkit-filter: blur(4px);
+
+    
+}
+.connexion-section{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: #ffffff46 0px 0px 15px, #00000086 0px 0px 10px;
+    background-color: rgba(0, 0, 0, 0.9);
+    height: 70%;
+    width: 30%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.child{
+    appearance: none;
+    border: none;
+    outline: 0.5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    font-size: 2vh;
+    background-color: #000;
+    color: #f0f0f0;
+    font-family: 'Poppins-Light';
+    height: 30%;
+    width: 80%;
+}
+.child:hover{
+    scale: 108%;
+    box-shadow: rgba(255, 255, 255, 0.233) 0 0 20px;
+    transition: 300ms;
+}
+.child:not(:hover){
+    transition: 300ms;
+}
+input[type='text'], input[type='password']{
+    padding-left: 10px;
+}
+input[type='text']::placeholder, input[type='password']::placeholder{
+    color: rgba(255, 255, 255, 0.3);
+    
+}
+.center-connexion-section{
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+.footer-connexion-section{
+    display: flex;
+    height: 20%;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+input.submit{
+    cursor: pointer;
+    font-family: 'Poppins-Light';
+    height: 45%;
+}
+a.inscription-link{
+    color: #f0f0f0;
+}
+a.inscription-link:hover{
+    scale: 108%;
+    text-shadow: #ffffff98 0 0 15px;
+    transition: 300ms;
+}
+a.inscription-link:not(:hover){
+    transition: 300ms;
+}
+header{
+    text-align: center;
+    font-size: 3vh;
+    border: none;
+    outline: none;
+    font-family: 'Poppins-Light';
+}
+.title:hover{
+    font-size: 32px;
+    transition: 300ms;
+}
+.title:not(:hover){
+    transition: 300ms;
+}
+
+
+@media (max-width: 912px){
+    .connexion-section{
+        width: 70%;
+    }
+}
+@media (max-width: 1150px) {
+    .connexion-section{
+        width: 50%;
+    }
+}

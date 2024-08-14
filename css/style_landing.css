@@ -1,0 +1,12 @@
+nav  {
+    background-color: rgb(182, 213, 240);
+    width: 15%;
+    height: 100%;
+    display: flex;
+}
+nav ul{
+    position: relative;
+    width: 100%;
+    top: 50%;
+    
+}
