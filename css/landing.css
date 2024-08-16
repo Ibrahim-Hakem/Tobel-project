@@ -201,6 +201,11 @@ section.public-chat form input {
     border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
+section.public-chat form input:hover {
+
+}
+
+
 section.public-chat form #send-btn {
     background-color: black;
     display: flex;
@@ -217,6 +222,11 @@ section.public-chat form #send-btn {
     outline: none;
     border: 1px solid rgba(0, 0, 0, 1);
 }
+
+section.public-chat form #send-btn:hover {
+    cursor: pointer;
+}
+
 
 section.public-chat form #send-btn img {
     width: 24px;
