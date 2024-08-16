@@ -7,9 +7,9 @@
     $allmsgs = $bdd->query("SELECT * FROM messages;");
     while ($msg = $allmsgs->fetch()){
     
-    echo "<p><b>" . $msg['pseudo'] . "</b>: " . $msg['message'] . "</p>";
+        echo "<p><b>" . $msg['pseudo'] . "</b>: " . $msg['message'] . "</p>";
     
     }
 
-
+    
 ?>

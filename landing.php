@@ -20,7 +20,7 @@
         ?>
     </style>
     <title>Tobel</title>
-    <script src="js/landing.js"></script>
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="icon" href="premier_logo_Tobel.png" type="image/x-icon">
 </head>
@@ -29,43 +29,35 @@
 <body id="body">
     <a href="disconnect.php">Se déconnecter</a><br>
 <?= htmlspecialchars($_SESSION['user']->getPseudo()); ?>
-<form method="post" action="">
-<textarea name="message" id="massage" cols="30" rows="10"></textarea>
-<input type="submit" value="Envoyer">
+<form method="post" action="" class="sending-message">
+    <textarea name="message" id="massage" cols="30" rows="10"></textarea>
+    <input id="send-btn" type="submit" value="Envoyer">
 
 <?php
-    if (isset($_POST['message']) && isset($_SESSION['user']) && !empty($_POST['message']) && !empty($_SESSION['user'])){
-    $pseudo = htmlspecialchars($_SESSION['user']->getPseudo());
-    $message = nl2br(htmlspecialchars($_POST['message']));
-    
-    $insert_message = $bdd->prepare('INSERT INTO messages(pseudo, message) VALUES(?, ?)');
-    $insert_message->execute(array($pseudo, $message));
-    
-    ?> 
-    
 
+    if (isset($_POST['message']) && isset($_SESSION['user']) && !empty($_POST['message']) && !empty($_SESSION['user'])) {
+        $pseudo = htmlspecialchars($_SESSION['user']->getPseudo());
+        $message = nl2br(htmlspecialchars($_POST['message']));
 
-    
-    <script>
-        let ajax = XMLHttpRequest();
-        let body = document.getElementsByTagName("body");
-
-        ajax.onload(function() {
-            if (this.status == 200 && this.readyState == 4){
-                document.innerHTML = ajax.responseText;
-            }
-        });
-
-        ajax.open("POST", "test.txt", true);
-        ajax.send();
-    </script>
-    
-    <?php
+        try {
+            $insert_message = $bdd->prepare('INSERT INTO messages(pseudo, message) VALUES(?, ?)');
+            $insert_message->execute(array($pseudo, $message));
+            echo "Message sent successfully!"; // Optional feedback
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage(); // Handle any errors
+        }
+    } else {
+        echo "Please fill in all fields."; // Optional feedback
     }
 
 ?> 
-
-
 </form>
+
+<div class="chat">
+
+</div>
+
+<script src="js/landing__.js"></script>
+
 </body>
 </html>

@@ -1,24 +1,74 @@
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/style_base.css">
-    <link rel="stylesheet" href="css/style_landing.css">
-    <script src="js/landing.js"></script>
-    <title>Tobel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/landing.css">
+    <title>Landing Page</title>
 </head>
 <body>
-<nav>
-    <ul>
-        <li><a href="home.php">Accueil</a></li>
-        <li><button name="categorieButton" id="categorieButton" onclick="showCategories()">Catégorie</button>
-            <div id="categorie">
-                <div hidden="true" >Football</div>
-                <div hidden="true" >Informatique</div>    
-            </div>
-        </li>
-        <li><a href="profil.php">Profil</a></li>
 
-    </ul>
-</nav>
+    <section class="menu">
+        <header class="header-title">
+            <div class="logo">
+                <img src="img/logo/tobel-high-resolution-logo-transparent (1).png" alt="">
+            </div>
+        </header>
+        <div class="nav-bar">
+            <div class="user">
+                <img src="img/logo/ishak_photo_profile.png" alt="photo profile" class="profile-photo">
+                <p class="username">Hakem1099</p>
+            </div>
+            <hr>
+            <nav >
+                <ul class="sidebar">
+                    <li><img src="img/icons/chercher.png" alt="">Chercher</li>
+                    <li><img src="img/icons/accueil.png" alt="">Accueil</li>
+                    <li><img src="img/icons/ajouter.png" alt="">Créer un Post</li>
+                    <li><img src="img/icons/commenter.png" alt="">Messages</li>
+                    <li><img src="img/icons/reglage.png" alt="">Réglage</li>
+                    <li><img src="img/icons/se-deconnecter.png" alt="">Déconnecter</li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <div class="menu2flex"></div>
+
+
+    <section class="feed">
+        <!-- Future Option to make posts -->
+    </section>
+
+    <section class="public-chat">
+        <header class="public-chat-header">
+            Chat Public
+        </header>
+        
+        <div class="chat">
+            <div class="outgoing">
+                
+                <div class="details">
+                    <p>Hello admin,
+                        I have things to say
+                    </p>
+                </div>
+            </div>
+        
+            <div class="incoming">
+                <div class="details">
+                    <img src="img/logo/profile-photo-ibrahim.jpg" alt="">
+                    <p><b>Admin: </b>I am admin ! Je peux vraiment parler énorment mon cher amie</p>
+                </div>
+            </div>
+        
+        </div>
+        <hr>
+        <form method="post" action="#" class="sending-message">
+            <input type="text" placeholder="Type message..." name="message" id="massage"></input>
+            <button id="send-btn" onclick="alert('Hello World!')"><img src="img/icons/telegram-plane-brands-solid-white.svg" alt="Envoyé"></button>
+        </form>
+
+    </section>
 </body>
 </html>
