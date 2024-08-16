@@ -1,6 +1,11 @@
 
+const activateNotif = document.getElementById("activate-notif");
+
+var isNotifActivated = false;
+
 const form = document.querySelector("form.sending-message");
 
+const inputMessage = document.getElementById("message");
 const sendBtn = document.getElementById("send-btn");
 
 const chat = document.querySelector(".chat");
@@ -31,8 +36,13 @@ sendBtn.onclick = (e) => {
     ajax.open("POST", "landing.php", true);
     ajax.onload = () => {
         if (ajax.status == 200 && ajax.readyState == XMLHttpRequest.DONE) {
-            
-            console.log("AJAX from onsubmit status : 200");
+            form.reset(); // Réinitialise le formulaire
+            console.log("Message envoyé avec succès");
+            /*
+            setTimeout(() => {
+                chat.scrollTop = chat.scrollHeight;
+            }, 500);
+*/
             
         }
     };
@@ -40,6 +50,10 @@ sendBtn.onclick = (e) => {
     let formData = new FormData(form);
     ajax.send(formData);
 }
+
+
+
+
 /*
 sendBtn.onclick = () => {
     
@@ -61,18 +75,42 @@ sendBtn.onclick = () => {
     ajax.send(formData);
 }
 */
+
+let last_data = "";
+let data = "";
+    
 setInterval(() => {
     
     
     let ajax = new XMLHttpRequest();
     let body = document.getElementsByTagName("body");
 
+
     ajax.open("GET", "loading_landing.php", true);
     ajax.onload = () => {
         if (ajax.status == 200 && ajax.readyState == XMLHttpRequest.DONE) {
-            let data = ajax.responseText;
-            console.log("Refresh without refreshing.");
-            chat.innerHTML = data;
+
+            if (isNotifActivated) {
+                if (ajax.responseText.length > last_data.length) {
+                    let notification = new Audio("sounds/message-notification2.mp3");
+                    notification.play();
+                }
+            }
+
+            if (ajax.responseText !== last_data) {
+                console.log("Refresh without refreshing.");
+                data = ajax.responseText;
+                console.log("last_data :");
+                console.log(last_data);
+                chat.innerHTML = data;
+                last_data = data;
+                chat.scrollTop = chat.scrollHeight;
+                
+            } 
+
+
+
+
         }
     };
 
@@ -81,3 +119,13 @@ setInterval(() => {
 }, 500);
 
 
+activateNotif.addEventListener("click", function () {      
+    console.log(isNotifActivated);
+    if (isNotifActivated == false) {
+        isNotifActivated = true;
+        let notification = new Audio("sounds/message-notification2.mp3");
+        notification.play();
+    } else {
+        isNotifActivated = false;
+    }
+});
