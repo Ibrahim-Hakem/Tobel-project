@@ -14,6 +14,7 @@ class User
     private $_classe;
     private $_averageNote;
     private $_birthDay;
+    private $_profilePhoto;
 
     public function getId() {return $this->_id;}
     public function getPseudo() {return $this->_pseudo;}
@@ -26,6 +27,7 @@ class User
     public function getClasse() {return $this->_classe;}
     public function getAverageNote() {return $this->_averageNote;}
     public function getBirthDay() {return $this->_birthDay;}
+    public function getProfilePhoto() {return $this->_profilePhoto;}
 
     public function setId(int $newId) {$this->_id = $newId;}
     public function setPseudo(string $newPseudo) {$this->_pseudo = $newPseudo;}
@@ -38,6 +40,8 @@ class User
     public function setClasse(string $newClasse) {$this->_classe = $newClasse;}
     public function setAverageNote(float $newAverageNote) {$this->_averageNote = $newAverageNote;}
     public function setBirthDay(string $newBirthDay) {$this->_birthDay = $newBirthDay;}
+    public function setProfilePhoto(string $newProfilePhoto) {$this->_profilePhoto = $newProfilePhoto;}
+
 
 
     public function __construct(array $data)
@@ -53,7 +57,7 @@ class User
         $this->setClasse($data[8]);
         $this->setAverageNote($data[9]);
         $this->setBirthDay($data[10]);
-        
+        $this->setProfilePhoto($data[11]);
         
     }
 

@@ -1,7 +1,7 @@
 
 const activateNotif = document.getElementById("activate-notif");
 
-var isNotifActivated = false;
+var isNotifActivated = true;
 
 const form = document.querySelector("form.sending-message");
 
@@ -52,30 +52,6 @@ sendBtn.onclick = (e) => {
 }
 
 
-
-
-/*
-sendBtn.onclick = () => {
-    
-    console.log("The code enters <script>");
-    
-    let ajax = new XMLHttpRequest();
-    let body = document.getElementsByTagName("body");
-
-    ajax.open("POST", "loading_landing.php", true);
-    ajax.onload = () => {
-        if (ajax.status == 200 && ajax.readyState == XMLHttpRequest.DONE) {
-            
-            console.log(ajax.responseText);
-            
-        }
-    };
-
-    let formData = new FormData(form);
-    ajax.send(formData);
-}
-*/
-
 let last_data = "";
 let data = "";
     
@@ -92,8 +68,9 @@ setInterval(() => {
 
             if (isNotifActivated) {
                 if (ajax.responseText.length > last_data.length) {
-                    let notification = new Audio("sounds/message-notification2.mp3");
-                    notification.play();
+                    console.log("hello world");
+
+
                 }
             }
 
@@ -119,7 +96,18 @@ setInterval(() => {
 }, 500);
 
 
-activateNotif.addEventListener("click", function () {      
+document.querySelector("section.feed form").addEventListener("click", function (e) {      
+    e.preventDefault();
+    document.querySelector("section.feed form").reset();
+});
+
+activateNotif.addEventListener("click", function () {
+    console.log("executing the addEventListener");
+    changeNotifActivated();
+
+});
+/*
+function changeNotifActivated() {
     console.log(isNotifActivated);
     if (isNotifActivated == false) {
         isNotifActivated = true;
@@ -128,4 +116,5 @@ activateNotif.addEventListener("click", function () {
     } else {
         isNotifActivated = false;
     }
-});
+    
+}*/

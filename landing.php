@@ -1,12 +1,8 @@
 <?php
-    require_once('User.php');
-    require_once('config.php');
 
-    if(!isset($_SESSION['user'])){
-        header("Location:index.php");
-    }
-    
-      
+    require_once("php/Component/header.php");
+
+    $_SESSION['notif_activated'] = true;
 ?>
 
 
@@ -30,7 +26,7 @@
         </header>
         <div class="nav-bar">
             <div class="user">
-                <img src="img/logo/ishak_photo_profile.png" alt="photo profile" class="profile-photo">
+                <img src=<?= "img/bdd/" . $_SESSION['user']->getProfilePhoto(); ?> alt="photo profile" class="profile-photo">
                 <p class="username"><?= htmlspecialchars($_SESSION['user']->getPseudo());?></p>
             </div>
             <hr>
@@ -40,7 +36,7 @@
                     <li><img src="img/icons/accueil.png" alt="">Accueil</li>
                     <li><img src="img/icons/ajouter.png" alt="">Créer un Post</li>
                     <li><img src="img/icons/commenter.png" alt="">Messages</li>
-                    <li><img src="img/icons/reglage.png" alt="">Réglage</li>
+                    <li><a href="settings.php"><img src="img/icons/reglage.png" alt="">Réglage</a></li>
                     <li><a href="disconnect.php"><img src="img/icons/se-deconnecter.png" alt="">Déconnecter</a></li>
                 </ul>
             </nav>
@@ -52,7 +48,10 @@
 
     <section class="feed">
         <!-- Future Option to make posts -->
-        <button id="activate-notif">Activer Notification</button>
+
+            <button onclick="changeNotifActivated();" id="activate-notif" name="activate-notif">Activer Notification</button>
+
+        
     </section>
 
     <section class="public-chat">
@@ -83,11 +82,12 @@
 
             if (isset($_POST['message']) && isset($_SESSION['user']) && !empty($_POST['message']) && !empty($_SESSION['user'])) {
                 $pseudo = htmlspecialchars($_SESSION['user']->getPseudo());
+                $sender = htmlspecialchars($_SESSION['user']->getEmail());
                 $message = nl2br(htmlspecialchars($_POST['message']));
 
                 try {
-                    $insert_message = $bdd->prepare('INSERT INTO messages(pseudo, message) VALUES(?, ?)');
-                    $insert_message->execute(array($pseudo, $message));
+                    $insert_message = $bdd->prepare('INSERT INTO messages(pseudo, message, sender) VALUES(?, ?, ?)');
+                    $insert_message->execute(array($pseudo, $message, $sender));
                     header("Location: landing.php");
                     exit();
                     echo "Message sent successfully!"; // Optional feedback
