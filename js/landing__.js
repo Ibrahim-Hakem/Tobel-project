@@ -36,6 +36,8 @@ sendBtn.onclick = (e) => {
     ajax.open("POST", "landing.php", true);
     ajax.onload = () => {
         if (ajax.status == 200 && ajax.readyState == XMLHttpRequest.DONE) {
+            let notification = new Audio("sounds/message-notification2.mp3");
+            notification.play();
             form.reset(); // Réinitialise le formulaire
             console.log("Message envoyé avec succès");
             /*
@@ -66,13 +68,7 @@ setInterval(() => {
     ajax.onload = () => {
         if (ajax.status == 200 && ajax.readyState == XMLHttpRequest.DONE) {
 
-            if (isNotifActivated) {
-                if (ajax.responseText.length > last_data.length) {
-                    console.log("hello world");
 
-
-                }
-            }
 
             if (ajax.responseText !== last_data) {
                 console.log("Refresh without refreshing.");
@@ -96,17 +92,14 @@ setInterval(() => {
 }, 500);
 
 
-document.querySelector("section.feed form").addEventListener("click", function (e) {      
-    e.preventDefault();
-    document.querySelector("section.feed form").reset();
-});
+
 
 activateNotif.addEventListener("click", function () {
     console.log("executing the addEventListener");
     changeNotifActivated();
 
 });
-/*
+
 function changeNotifActivated() {
     console.log(isNotifActivated);
     if (isNotifActivated == false) {
@@ -117,4 +110,4 @@ function changeNotifActivated() {
         isNotifActivated = false;
     }
     
-}*/
+}

@@ -1,0 +1,1 @@
+& C:/Users/GIGABYTE/AppData/Local/Programs/Python/Python311/python.exe c:/Users/GIGABYTE/Desktop/main.py

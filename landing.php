@@ -48,10 +48,10 @@
 
     <section class="feed">
         <!-- Future Option to make posts -->
-
+        <canvas id="canvas"></canvas>
             <button onclick="changeNotifActivated();" id="activate-notif" name="activate-notif">Activer Notification</button>
 
-        
+            
     </section>
 
     <section class="public-chat">
@@ -101,6 +101,6 @@
     </section>
 
 <script src="js/landing__.js"></script>
-
+<script src="js/canvas/circles-movement.js"></script>
 </body>
 </html>

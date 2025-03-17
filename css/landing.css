@@ -13,10 +13,6 @@ html, body, * {
     margin: 0;
 }
 
-:root{
-
-}
-
 html{
     
     min-height:100%;/* make sure it is at least as tall as the viewport */
@@ -201,8 +197,9 @@ section.public-chat form input {
     border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-section.public-chat form input:hover {
-
+section.public-chat form input:focus {
+    border: 1px solid black;
+    transition: 300ms;
 }
 
 
@@ -282,5 +279,12 @@ section.public-chat form #send-btn img {
 
 
 
-
-
+@media screen and (max-width: 768px) {
+    section.public-chat {
+        
+        margin-left: 48px;
+        margin-right: 16px;
+        width: calc(100% - 64px);
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+    }
+}
